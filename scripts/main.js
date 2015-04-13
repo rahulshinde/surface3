@@ -2,7 +2,13 @@
 (function ($) {
 
   var getHanatarash,
-      getRandom;
+      getRandomVideo,
+      getRandomImage;
+
+  var searchString = $('#script').text();
+  var searchArray = searchString.split(" ");
+  var searchNum = Math.floor(Math.random()* searchArray.length);
+  var searchTerm = searchArray[searchNum];
 
   getHanatarash = function getHanatarashF() {
     var hanatarash = $.ajax({
@@ -23,12 +29,7 @@
 
   };
 
-  getRandom = function getRandomF() {
-    var searchString = $('#script').text();
-    var searchArray = searchString.split(" ");
-    var searchNum = Math.floor(Math.random()* searchArray.length);
-    var searchTerm = searchArray[searchNum];
-
+  getRandomVideo = function getRandomF() {
     var randomVideo = $.ajax({
       url: "https://www.googleapis.com/youtube/v3/search?part=id%2C+snippet&q=" + searchTerm + "&maxResults=1&key=AIzaSyDmdYBSUbMtBe-YArhGfDR5d32RtKWwRwA",
       dataType: 'jsonp',
@@ -45,11 +46,14 @@
     });
 
 
+
+
     console.log(searchNum);
     console.log(searchTerm);
   }
 
-  getRandom();
+  getHanatarash();
+  getRandomVideo();
 
 
 })(jQuery);
