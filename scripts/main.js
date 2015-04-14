@@ -22,7 +22,7 @@
           var item = data.items[i];
           var videoId = item.id.videoId;
 
-          console.log(videoId);
+          // console.log(videoId);
         }
 
     });
@@ -41,7 +41,7 @@
           var item = data.items[i];
           var videoId2 = item.id.videoId;
 
-          console.log(videoId2);
+          // console.log(videoId2);
         }   
     });
 
@@ -52,8 +52,30 @@
     console.log(searchTerm);
   }
 
-  getHanatarash();
-  getRandomVideo();
+  getImgurAuth = function getImgurAuthF() {
+    var randomImage = $.ajax({
+      url: 'https://api.imgur.com/3/gallery/search.json',
+      data: {
+        q: 'hello'
+      },
+      type: 'GET',
+      headers: {
+        Authorization: 'Client-ID 77fc4712c0786c7'
+      }
+    });
+
+    randomImage.done(function (response) {
+      var item = response.data[0];
+      var imageId = item.link;
+
+      console.log(imageId);
+      
+    });
+  }
+
+  // getHanatarash();
+  // getRandomVideo();
+  getImgurAuth();
 
 
 })(jQuery);
