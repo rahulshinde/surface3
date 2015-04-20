@@ -55,3 +55,110 @@ table {
 /*===============================================
     BEGIN AUTHOR STYLING
   =============================================== */
+
+.header {
+  /* Positioning */
+  position: fixed;
+  top: 0;
+  /* Box-model */
+  width: 100%;
+  height: 20%;
+  /* Typography */
+  /* Visual */
+  z-index: 10;
+  /* Misc */
+}
+
+#question {
+  /* Positioning */
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  /* Box-model */
+  /* Typography */
+  /* Visual */
+  /* Misc */
+}
+
+#marqueecontainer{
+
+  /* Positioning */
+  position: relative;
+  /* Box-model */
+  width: 400px; /*marquee width */
+  height: 350px; /*marquee height */
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2px;
+  padding-left: 4px;
+  overflow: hidden;
+  /* Typography */
+  /* Visual */
+  background-color: white;
+  border: 3px solid orange;
+  z-index: 10;
+  /* Misc */
+  
+}
+
+.video {
+  /* Positioning */
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  /* Box-model */
+  /* Typography */
+  /* Visual */
+  z-index: 4;
+  /* Misc */
+}
+
+
+.image {
+  /* Positioning */
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  /* Box-model */
+  /* Typography */
+  /* Visual */
+  z-index: 4;
+  /* Misc */
+}
+
+.footer {
+  /* Positioning */
+  position: fixed;
+  bottom: 0;
+  /* Box-model */
+  width: 100%;
+  height: 20%;
+  /* Typography */
+  /* Visual */
+  z-index: 10;
+  /* Misc */
+}
+
+.hanatarash {
+  /* Positioning */
+  float: right;
+  /* Box-model */
+  padding-right: 5%;
+  /* Typography */
+  /* Visual */
+  z-index: 10;
+  /* Misc */
+}
+
+.instructions {
+  /* Positioning */
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  /* Box-model */
+  /* Typography */
+  /* Visual */
+  z-index: 10;
+  /* Misc */
+}
