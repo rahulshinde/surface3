@@ -62,12 +62,12 @@ table {
 
   @font-face {
     font-family: 'outliersregular';
-    src: url('fonts/myfirsttypeface-webfont.eot');
-    src: url('fonts/myfirsttypeface-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/myfirsttypeface-webfont.woff2') format('woff2'),
-         url('fonts/myfirsttypeface-webfont.woff') format('woff'),
-         url('fonts/myfirsttypeface-webfont.ttf') format('truetype'),
-         url('fonts/myfirsttypeface-webfont.svg#outliersregular') format('svg');
+    src: url('../fonts/myfirsttypeface-webfont.eot');
+    src: url('../fonts/myfirsttypeface-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/myfirsttypeface-webfont.woff2') format('woff2'),
+         url('../fonts/myfirsttypeface-webfont.woff') format('woff'),
+         url('../fonts/myfirsttypeface-webfont.ttf') format('truetype'),
+         url('../fonts/myfirsttypeface-webfont.svg#outliersregular') format('svg');
     font-weight: normal;
     font-style: normal;
   }
