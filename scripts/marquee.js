@@ -4,7 +4,7 @@
 * Visit http://www.dynamicdrive.com/ for this script and 100s more.
 ***********************************************/
 
-var delayb4scroll= 1 //Specify initial delay before marquee starts to scroll on page (2000=2 seconds)
+var delayb4scroll= 0 //Specify initial delay before marquee starts to scroll on page (2000=2 seconds)
 var marqueespeed= 1 //Specify marquee scroll speed (larger is faster 1-10)
 var pauseit=1 //Pause marquee onMousever (0=no. 1=yes)?
 
