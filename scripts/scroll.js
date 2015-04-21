@@ -43,7 +43,7 @@ function getScroll2DTransform ( scroll ) {
  
 function getScroll3DTransform( scroll ) {
   var z = ( scroll * (levels - 1) * distance3d );
-  return 'translate3d( 0, 1, ' + z + 'px )';
+  return 'translate3d( 0, 0, ' + z + 'px )';
 
 };
  
