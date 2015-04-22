@@ -183,8 +183,8 @@ table {
     /* Positioning */
     position: relative;
     /* Box-model */
-    width: 200px; /*marquee width */
-    height: 200px; /*marquee height */
+    width: 500px; /*marquee width */
+    height: 300px; /*marquee height */
     padding: 2px;
     padding-left: 4px;
     /* Typography */
@@ -210,6 +210,7 @@ table {
   p {
     font-family: 'outliersregular';
     font-size: 50px;
+    line-height: 35px;
   }
   
   
