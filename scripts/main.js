@@ -1,5 +1,7 @@
+var SITE = SITE || {};
 
-(function ($) {
+
+(function ($, SITE) {
 
   var getHanatarash,
       getRandomVideo,
@@ -39,7 +41,8 @@
           var item = data.items[i];
           var videoId = item.id.videoId;
 
-          // document.getElementById("hanatarash-response").textContent= videoId;
+          document.getElementById("hanatarash-response").textContent=videoId;
+          SITE.hanatarash = videoId;
         }
 
     });
@@ -58,7 +61,9 @@
           var item = data.items[i];
           var videoId2 = item.id.videoId;
 
-          // document.getElementById("youtube-response").textContent= videoId2;
+          console.log(videoId2);
+
+          document.getElementById("youtube-response").textContent=videoId2;
         }   
     });
 
@@ -85,14 +90,13 @@
       var item = response.data[0];
       var imageId = item.link;
 
-      // document.getElementById("imgur-response").textContent= imageId;
+      document.getElementById("imgur-response").textContent= imageId;
       
     });
   }
 
   getHanatarash();
   getRandomVideo();
-  getImgurAuth();
+  getImgurAuth(); 
 
-
-})(jQuery);
+})(jQuery, SITE);

@@ -28,8 +28,9 @@ function transformMarquee( scroll ) {
   var translateY = scroll * -10;
   var translateZ = scroll * 20;
   var translateMarquee = 'translate3d(' + translateX + 'px, ' + translateY + 'px, ' + translateZ + 'px)';
-
-  $('#marqueecontainer').css({'-moz-transform' : rotateMarquee, '-webkit-transform' : rotateMarquee});
+  var transformMarquee = rotateMarquee + ' ' + translateMarquee;
+  console.log(transformMarquee);
+  $('#marqueecontainer').css({'-moz-transform' : transformMarquee, '-webkit-transform' : transformMarquee});
   // $('#marqueecontainer').css({'-moz-transform' : translateMarquee, '-webkit-transform' : translateMarquee});
 };
 
