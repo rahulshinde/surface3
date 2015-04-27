@@ -76,6 +76,13 @@ table {
 /*=====================================
   DEFINING CONTAINER
 ======================================= */
+  textarea:focus, input:focus{
+    outline: 0;
+  }
+
+  *:focus {
+    outline: 0;
+  }
 
   #wrap{
       height: 100%;
@@ -140,20 +147,67 @@ table {
     /* Misc */
   }
 
+  /*================
+   SPINNER
+  ================== */
+
+  /* WebKit and Opera browsers */
+  @-webkit-keyframes spinner {
+    from { -webkit-transform: rotateY(0deg);    }
+    to   { -webkit-transform: rotateY(-360deg); }
+  }
+
+  /* all other browsers */
+  @keyframes spinner {
+    from {
+      -moz-transform: rotateY(0deg);
+      -ms-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+    }
+    to {
+      -moz-transform: rotateY(-360deg);
+      -ms-transform: rotateY(-360deg);
+      transform: rotateY(-360deg);
+    }
+  }
+
+  .about {
+    -webkit-animation-name: spinner;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-duration: 8s;
+
+    animation-name: spinner;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 6s;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
   .about {
     /* Positioning */
     float: right;
     position: relative;
-    right: 0;
+    right: 0px;
     /* Box-model */
-    overflow: auto;
     /* Typography */
+    font-family: 'PalanquinDark-Regular';
+    letter-spacing: 4px;
+    font-size: 26px;
     /* Visual */
     color: #FFF;
     text-decoration: none;
     z-index: 30;
     /* Misc */
   }
+
+  /*================
+   END SPINNER
+  ================== */
 
   .footer {
     position: fixed;
@@ -166,6 +220,12 @@ table {
   }
 
   #instruction {
+    position: absolute;
+    bottom: 2px;
+    left: 160px;
+    font-family: 'PalanquinDark-Regular';
+    letter-spacing: 1px;
+    font-size: 14px;
     color: #FFF;
   }
 
@@ -182,28 +242,35 @@ table {
   #marqueecontainer{
     /* Positioning */
     position: relative;
+    top: 10%;
     /* Box-model */
     width: 500px; /*marquee width */
     height: 300px; /*marquee height */
     padding: 2px;
     padding-left: 4px;
+    margin: 0 auto;
     /* Typography */
     /* Visual */
-    background-color: white;
+    background-color: #000;
     overflow: hidden;
-    border: 3px solid orange;
+    border: 3px inset #FFF;
+    z-index: 10;
     /* Misc */
   }
   
   #video {
     /* Positioning */
-    -webkit-transform: translate3d(0, 0, -1000px);
-    -moz-transform: translate3d(0, 0, -1000px);
-    -ms-transform: translate3d(0, 0, -1000px);
-    -o-transform: translate3d(0, 0, -1000px);
+    position: absolute;
+    top: 5%;
+    left: 25%;
+    -webkit-transform: translate3d(0, 0, -30px);
+    -moz-transform: translate3d(0, 0, -30px);
+    -ms-transform: translate3d(0, 0, -30px);
+    -o-transform: translate3d(0, 0, -30px);
     /* Box-model */
     /* Typography */
     /* Visual */
+    z-index: 5;
     /* Misc */
   }
 
@@ -211,18 +278,168 @@ table {
     font-family: 'outliersregular';
     font-size: 50px;
     line-height: 35px;
+    color: #FFF;
   }
   
   
   #img {
     /* Positioning */
-    -webkit-transform: translate3d(0, 0, -2000px);
-    -moz-transform: translate3d(0, 0, -2000px);
-    -ms-transform: translate3d(0, 0, -2000px);
-    -o-transform: translate3d(0, 0, -2000px);
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    -webkit-transform: translate3d(0, 0, -50px);
+    -moz-transform: translate3d(0, 0, -50px);
+    -ms-transform: translate3d(0, 0, -50px);
+    -o-transform: translate3d(0, 0, -50px);
     /* Box-model */
     /* Typography */
     /* Visual */
+    z-index: 1;
     /* Misc */
   }
+
+/*=====================================
+  INFO POPOUT
+======================================= */
+
+#info-container {
+  width: 99%;
+  height: 98%;
+  border: 5px solid #FFF;
+  background: black;
+}
+
+#info-body,
+#info-footer {
+  /* Positioning */
+  /* Box-model */
+  height: 100%;
+  /* Typography */
+  /* Visual */
+  /* Misc */
+
+}
+
+.value-left {
+  /* Positioning */
+  float: left;
+  position: absolute;
+  left: 3%;
+  top: 5%;
+  /* Box-model */
+  height: 40%;
+  width: 45%;
+  /* Typography */
+  /* Visual */
+  /* Misc */
+}
+
+.key-left {
+  /* Positioning */
+  float: left;
+  position: absolute;
+  left: 3%;
+  top: 40%;
+  /* Box-model */
+  padding-left: 30px;
+  height: 40%;
+  width: 45%;
+  overflow: hidden;
+  /* Typography */
+  /* Visual */
+  /* Misc */
+}
+
+.key-left:hover {
+  overflow: scroll;
+}
+
+.arrow {
+  /* Positioning */
+  position: fixed;
+  /* Box-model */
+  height: 23%;
+  width: auto;
+  margin-left: 22%;
+  margin-top: 2.5%;
+  /* Typography */
+  /* Visual */
+  /* Misc */
+}
+
+.value-left p,
+.key-left p {
+  /* Positioning */
+  /* Box-model */
+  /* Typography */
+  font-family: 'PalanquinDark-Regular';
+  letter-spacing: 1px;
+  line-height: 15px;
+  font-size: 14px;
+  /* Visual */
+  /* Misc */
+}
+
+#array-heading {
+  position: fixed;
+  padding-right: 50px;
+  margin-left: -30px;
+  background-color: #000;
+}
+
+.code-right {
+  /* Positioning */
+  float: right;
+  position: absolute;
+  right: 3%;
+  top: 5%;
+  /* Box-model */
+  overflow-y: scroll;
+  height: 80%;
+  width: 45%;
+  /* Typography */
+  /* Visual */
+  /* Misc */
+
+}
+
+.code-right p {
+  /* Positioning */
+  /* Box-model */
+  /* Typography */
+  font-family: 'SourceCodePro-ExtraLight';
+  letter-spacing: 1px;
+  line-height: 14px;
+  font-size: 12px;
+  word-wrap: break-word;
+  /* Visual */
+  /* Misc */
+}
+
+#tab1{
+  position: relative;
+  left: 30px;
+}
+
+#tab2{
+  position: relative;
+  left: 60px;
+}
+
+
+#info-instruction {
+  /* Positioning */
+  position: absolute;
+  bottom: 5%;
+  left: 3%;
+  /* Box-model */
+  /* Typography */
+  font-family: 'PalanquinDark-Regular';
+  letter-spacing: 1px;
+  font-size: 14px;
+  /* Visual */
+  color: #FFF;
+  /* Misc */
+
+} 
   

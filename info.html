@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> script api test </title>
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		
+	</head>
+	<body>	
+		<div id="info-container">
+			<div class="info-body">
+				<div class="value-left">
+					<p>
+						static search: hanatarash full album
+						<br>
+						youtube response:
+						<br>
+						https://www.youtube.com/watch?v= <span id="hanatarash-response"> </span>
+						<br>
+						<br>
+						variable input: <span id="variable-input"> </span> <span id="variable-num"> </span>
+						<br>
+						youtube response: 
+						<br>
+						https://www.youtube.com/watch?v=<span class="youtube-response"></span>
+						<br>
+						imgur response:
+						<br>
+						<span id="imgur-response"></span>
+						
+					</p>
+				</div>
+
+				<div class="key-left">
+					<img class="arrow" src="img/arrow-01.png">
+					<p>
+						<span id="array-heading">searchArray</span>
+						<br>
+						<br>
+						[0:Viewer]
+						<br>
+						[1:as]
+						<br>
+						[0:Viewer]
+						<br>
+						[1:as]
+						<br>
+						[0:Viewer]
+						<br>
+
+						[1:as]
+						<br>
+						[1:as]
+						<br>
+						[0:Viewer]
+						<br>
+						[1:as]
+						<br>
+						[0:Viewer]
+						<br>
+						[1:as]
+						<br>
+						[0:Viewer]
+						<br>
+						[1:as]
+						<br>
+						[0:Viewer]
+						<br>
+						[0:Viewer]
+						<br>
+						[1:as]
+						<br>
+					</p>
+				</div>
+
+				<div class="code-right">
+					<p>
+						
+						(function ($) {
+							<br>
+							<br>
+  							<span id="tab1">
+  								var getHanatarash,
+  							  							<br>
+  							  							    getRandomVideo,
+  							  							<br>
+  							  							    getRandomImage;
+  							  							<br>
+  							  							<br>
+  							  							var searchArray = searchString.split(" ");
+  							  							<br>
+  							  							var searchNum = Math.floor(Math.random()* searchArray.length);
+  							  							<br>
+  							  							var searchTerm = searchArray[searchNum];
+  														<br>
+  														<br>
+  							  							document.getElementById("variable-input").textContent= " " + searchTerm;
+  							  							<br>
+  							  							document.getElementById("variable-num").textContent= "[" + searchNum + "]";
+  							  						</span>
+							<br>
+							<br>
+  							<span id="tab1">getHanatarash = function getHanatarashF() {</span>
+  							<br>
+  							<span id="tab2">var hanatarash = $.ajax({
+  							  								<br>
+  							  							    url: "https://www.googleapis.com/youtube/v3/search?part=id%2C+snippet&q=hanatarash+full+album&maxResults=1&key=AIzaSyDmdYBSUbMtBe-YArhGfDR5d32RtKWwRwA",
+  							  						    	<br>
+  							  						    	dataType: 'jsonp',
+  							  						    	<br>
+  							      							type: 'GET'<br></span>
+    						<span id="tab1">});</span>
+							<br>
+							<br>
+    						hanatarash.done(function (data) {
+    						<br>
+    						   for(var i in data.items) {
+    						   <br>
+    						      var item = data.items[i];
+    						      <br>
+    						      var videoId = item.id.videoId;
+    						      <br>
+							  <br>
+    					      // document.getElementById("hanatarash-response").textContent= videoId;
+    					      <br>
+    					    }
+<br>
+<br>
+						    });
+						    <br>
+						<br>
+						  };
+<br>
+<br>
+  getRandomVideo = function getRandomF() {
+    var randomVideo = $.ajax({
+      url: "https://www.googleapis.com/youtube/v3/search?part=id%2C+snippet&q=" + searchTerm + "&maxResults=1&key=AIzaSyDmdYBSUbMtBe-YArhGfDR5d32RtKWwRwA",
+      dataType: 'jsonp',
+      type: 'GET'
+    });
+
+    randomVideo.done(function (data) {
+       for(var i in data.items) {
+          var item = data.items[i];
+          var videoId2 = item.id.videoId;
+
+          // document.getElementById("youtube-response").textContent= videoId2;
+        }   
+    });
+
+
+
+
+    console.log(searchNum);
+    console.log(searchTerm);
+  }
+
+  getImgurAuth = function getImgurAuthF() {
+    var randomImage = $.ajax({
+      url: 'https://api.imgur.com/3/gallery/search.json',
+      data: {
+        q: searchTerm
+      },
+      type: 'GET',
+      headers: {
+        Authorization: 'Client-ID 77fc4712c0786c7'
+      }
+    });
+
+    randomImage.done(function (response) {
+      var item = response.data[0];
+      var imageId = item.link;
+
+      // document.getElementById("imgur-response").textContent= imageId;
+      
+    });
+  }
+
+  getHanatarash();
+  getRandomVideo();
+  getImgurAuth();
+
+
+})(jQuery);
+					</p>
+				</div>
+			</div>
+			<div class="info-footer">
+				<h1 id="info-instruction">Press esc to close.</h1>
+			</div>
+		</div> <!-- end container -->
+   
+		<script src="scripts/jquery-1.11.2.min.js"></script>
+		<script src="scripts/modernizr.js"></script>
+    	<script src="scripts/main.js"></script>
+	</body>
+</html>
