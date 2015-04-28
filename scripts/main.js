@@ -70,8 +70,6 @@ var SITE = SITE || {};
 
 
 
-    console.log(searchNum);
-    console.log(searchTerm);
   }
 
   getImgurAuth = function getImgurAuthF() {
