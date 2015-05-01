@@ -35,12 +35,15 @@ var SITE = SITE || {};
 
     var hanatarashTxt = SITE.hanatarash;
     document.getElementById('hanatarash-response').textContent=hanatarashTxt;
+    console.log(hanatarashTxt);
 
     var youtubeTxt = SITE.video;
     document.getElementById('youtube-response').textContent=youtubeTxt;
+    console.log(youtubeTxt);
 
     var imgurTxt = SITE.image;
     document.getElementById('imgur-response').textContent=imgurTxt;
+    console.log(imgurTxt);
 
     var inputTxt = ' ' + searchTerm;
     document.getElementById("variable-input").textContent=inputTxt;
