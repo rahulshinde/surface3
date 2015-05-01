@@ -33,14 +33,19 @@ var SITE = SITE || {};
     var imgRandom = '<img id="imgur" src="' + SITE.image +'">';
     document.getElementById('img').innerHTML=imgRandom;
 
-    document.getElementById('hanatarash-response').textContent=SITE.hanatarash;
+    var hanatarashTxt = SITE.hanatarash;
+    document.getElementById('hanatarash-response').textContent=hanatarashTxt;
 
-    document.getElementById('youtube-response').textContent=SITE.video;
+    var youtubeTxt = SITE.video;
+    document.getElementById('youtube-response').textContent=youtubeTxt;
 
-    document.getElementById('imgur-response').textContent=SITE.image;
+    var imgurTxt = SITE.image;
+    document.getElementById('imgur-response').textContent=imgurTxt;
 
-    document.getElementById("variable-input").textContent= ' ' + searchTerm;
-    document.getElementById("variable-num").textContent= '[' + searchNum + ']';
+    var inputTxt = ' ' + searchTerm;
+    document.getElementById("variable-input").textContent=inputTxt;
+    var numTxt = '[' + searchNum + ']';
+    document.getElementById("variable-num").textContent= numTxt;
 
 
   }
@@ -112,6 +117,5 @@ var SITE = SITE || {};
 
 
   getInfo();
-  infoLoaded();
 
 })(jQuery, SITE);
