@@ -23,11 +23,25 @@ var SITE = SITE || {};
 
   infoLoaded = function infoLoadedF () {
     // insert hanatarash
-    var videoHanatarash = '<iframe id="ytplayer" type="text/html" width="150" height="115" src="http://www.youtube.com/embed/' + SITE.hanatarash + '?autoplay=1&rel=0&showinfo=0&controls=0&origin=http://example.com" frameborder="0"/></iframe>';
+    var videoHanatarash = '<iframe id="ytplayer" type="text/html" width="150" height="115" src="http://www.youtube.com/embed/' + SITE.hanatarash + '?autoplay=1&rel=0&showinfo=0&controls=0&modestbranding=1&origin=http://example.com" frameborder="0"/></iframe>';
     document.getElementById('hanatarash').innerHTML=videoHanatarash;
 
     //insert video
-    var videoRandom = '<iframe id="ytplayer" type="text/html" width="150" height="115" src="http://www.youtube.com/embed/' + SITE.hanatarash + '?autoplay=1&origin=http://example.com" frameborder="0"/></iframe>';
+    var videoRandom = '<iframe id="ytplayer" type="text/html" width="500" height="350" src="http://www.youtube.com/embed/' + SITE.video + '?autoplay=1&rel=0&showinfo=0&controls=0&modestbranding=1&origin=http://example.com" frameborder="0"/></iframe>';
+    document.getElementById('video').innerHTML=videoRandom;
+
+    var imgRandom = '<img id="imgur" src="' + SITE.image +'">';
+    document.getElementById('img').innerHTML=imgRandom;
+
+    document.getElementById('hanatarash-response').textContent=SITE.hanatarash;
+
+    document.getElementById('youtube-response').textContent=SITE.video;
+
+    document.getElementById('imgur-response').textContent=SITE.image;
+
+    document.getElementById("variable-input").textContent= ' ' + searchTerm;
+    document.getElementById("variable-num").textContent= '[' + searchNum + ']';
+
 
   }
 
@@ -37,14 +51,14 @@ var SITE = SITE || {};
         getRandomImage;
 
     var getHanatarash = $.ajax({
-      url: "https://www.googleapis.com/youtube/v3/search?part=id%2C+snippet&q=hanatarash+full+album&maxResults=1&key=AIzaSyDmdYBSUbMtBe-YArhGfDR5d32RtKWwRwA",
+      url: "https://www.googleapis.com/youtube/v3/search?part=id%2C+snippet&q=hanatarash&maxResults=3&key=AIzaSyDmdYBSUbMtBe-YArhGfDR5d32RtKWwRwA",
       dataType: 'jsonp',
       type: 'GET'
     });
 
     getHanatarash.done(function (data) {
        for(var i in data.items) {
-          var item = data.items[i];
+          var item = data.items[1];
           var hanatarashId = item.id.videoId;
           SITE.hanatarash = hanatarashId;
           console.log(SITE.hanatarash);
@@ -93,8 +107,7 @@ var SITE = SITE || {};
   }
 
 
-  document.getElementById("variable-input").textContent= " " + searchTerm;
-  document.getElementById("variable-num").textContent= "[" + searchNum + "]";
+  
 
 
 
