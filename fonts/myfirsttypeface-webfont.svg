@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+<svg xmlns="http://www.w3.org/2000/svg">
 <metadata></metadata>
 <defs>
 <font id="outliersregular" horiz-adv-x="640" >
@@ -11,10 +11,13 @@
 <glyph unicode=" "  horiz-adv-x="320" />
 <glyph unicode="&#x09;" horiz-adv-x="320" />
 <glyph unicode="&#xa0;" horiz-adv-x="320" />
+<glyph unicode="'" horiz-adv-x="192" d="M64 480v192h64v-96l-32 -64z" />
 <glyph unicode="(" horiz-adv-x="256" d="M0 0v960l192 192v-64l-128 -128v-960l128 -128v-64z" />
 <glyph unicode=")" horiz-adv-x="256" d="M0 -128l128 128v960l-128 128v64l192 -192v-960l-192 -192v64z" />
 <glyph unicode="," horiz-adv-x="128" d="M0 -96v192h64v-96l-32 -64z" />
-<glyph unicode="." horiz-adv-x="128" d="M0 0v96h64v-96h-64z" />
+<glyph unicode="." horiz-adv-x="192" d="M64 0v96h64v-96h-64z" />
+<glyph unicode=":" horiz-adv-x="192" d="M64 0v96h64v-96h-64zM64 320v96h64v-96h-64z" />
+<glyph unicode=";" horiz-adv-x="192" d="M64 -96v192h64v-96l-32 -64zM64 320v96h64v-96h-64z" />
 <glyph unicode="A" d="M64 0v832l192 192h256q26 0 44 -20q20 -18 20 -44v-896l-96 -96v608h-352v-576h-64zM128 608h352v352h-224l-128 -128v-224z" />
 <glyph unicode="B" horiz-adv-x="704" d="M64 0v832l192 192h256q26 0 44 -20q20 -18 20 -44v-256l-128 -128h-320l64 -32h256l64 -32l128 -128v-256l-128 -128h-448zM128 64h384l32 64v256l-32 64l-64 64h-320v-448zM128 640h320l32 64v256h-224l-128 -128v-192z" />
 <glyph unicode="C" d="M64 0v832l192 192h256q26 0 44 -20q20 -18 20 -44l-64 -32l-64 32h-192l-128 -128v-800h448l64 -32h-576z" />

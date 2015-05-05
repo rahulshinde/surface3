@@ -21,7 +21,10 @@ var SITE = SITE || {};
   var searchNum = Math.floor(Math.random()* searchArray.length);
   var searchTerm = searchArray[searchNum];
 
-  infoLoaded = function infoLoadedF () {
+  
+
+
+  placeInfo = function placeInfoF () {
     // insert hanatarash
     var videoHanatarash = '<iframe id="ytplayer" type="text/html" width="150" height="115" src="http://www.youtube.com/embed/' + SITE.hanatarash + '?autoplay=1&rel=0&showinfo=0&controls=0&modestbranding=1&origin=http://example.com" frameborder="0"/></iframe>';
     document.getElementById('hanatarash').innerHTML=videoHanatarash;
@@ -30,25 +33,96 @@ var SITE = SITE || {};
     var videoRandom = '<iframe id="ytplayer" type="text/html" width="500" height="350" src="http://www.youtube.com/embed/' + SITE.video + '?autoplay=1&rel=0&showinfo=0&controls=0&modestbranding=1&origin=http://example.com" frameborder="0"/></iframe>';
     document.getElementById('video').innerHTML=videoRandom;
 
+    //insert image
     var imgRandom = '<img id="imgur" src="' + SITE.image +'">';
     document.getElementById('img').innerHTML=imgRandom;
 
+    //insert hanatarash text
     var hanatarashTxt = SITE.hanatarash;
     document.getElementById('hanatarash-response').textContent=hanatarashTxt;
     console.log(hanatarashTxt);
 
+    //insert youtube text
     var youtubeTxt = SITE.video;
     document.getElementById('youtube-response').textContent=youtubeTxt;
-    console.log(youtubeTxt);
 
+    //insert imgur text
     var imgurTxt = SITE.image;
     document.getElementById('imgur-response').textContent=imgurTxt;
-    console.log(imgurTxt);
 
+    //insert input values
     var inputTxt = ' ' + searchTerm;
     document.getElementById("variable-input").textContent=inputTxt;
     var numTxt = '[' + searchNum + ']';
     document.getElementById("variable-num").textContent= numTxt;
+
+
+  }
+
+  // var hanatarashInfo,
+  //       youtubeInfo,
+  //       imgurInfo;
+
+  // hanatarashInfo = function hanatarashInfoF (data) {
+  //     console.log(data);
+  //      for(var i in data.items) {
+  //         var item = data.items[1];
+  //         var hanatarashId = item.id.videoId;
+  //         SITE.hanatarash = hanatarashId;        }
+
+  //   };
+
+  //   youtubeInfo = function youtubeInfoF (data) {
+  //     console.log(data);
+  //      for(var i in data.items) {
+  //         var item = data.items[i];
+  //         var youtubeId = item.id.videoId;
+
+  //         SITE.video = youtubeId;
+  //         console.log(SITE.video);
+  //       }   
+  //   };
+
+  //   imgurInfo = function imgurInfoF (response) {
+  //     console.log(data);
+  //     var item = response.data[0];
+  //     var imageId = item.link;
+
+  //     SITE.image = imageId;
+  //     console.log(SITE.image);
+      
+  //   };
+
+  infoLoaded = function infoLoadedF (data, data2, data3) {
+  
+
+    if (data) {
+      // Imgur
+      var item = response.data[0];
+      var imageId = item.link;
+
+      SITE.image = imageId;
+    }
+
+    if (data2) {
+      // hanta
+      for(var i in data2.items) {
+        var item = data2.items[1];
+        var hanatarashId = item.id.videoId;
+        SITE.hanatarash = hanatarashId;       
+      }
+    }
+
+    if (data3) {
+      // youtube
+      for(var i in data3.items) {
+        var item = data3.items[i];
+        var youtubeId = item.id.videoId;
+
+        SITE.video = youtubeId;
+        console.log(SITE.video);   
+      }
+    }
 
 
   }
@@ -64,15 +138,6 @@ var SITE = SITE || {};
       type: 'GET'
     });
 
-    getHanatarash.done(function (data) {
-       for(var i in data.items) {
-          var item = data.items[1];
-          var hanatarashId = item.id.videoId;
-          SITE.hanatarash = hanatarashId;
-          console.log(SITE.hanatarash);
-        }
-
-    });
 
     var getRandomVideo = $.ajax({
       url: "https://www.googleapis.com/youtube/v3/search?part=id%2C+snippet&q=" + searchTerm + "&maxResults=1&key=AIzaSyDmdYBSUbMtBe-YArhGfDR5d32RtKWwRwA",
@@ -80,15 +145,7 @@ var SITE = SITE || {};
       type: 'GET'
     });
 
-    getRandomVideo.done(function (data) {
-       for(var i in data.items) {
-          var item = data.items[i];
-          var youtubeId = item.id.videoId;
-
-          SITE.video = youtubeId;
-          console.log(SITE.video);
-        }   
-    });
+    
 
     var getRandomImage = $.ajax({
       url: 'https://api.imgur.com/3/gallery/search.json',
@@ -101,16 +158,7 @@ var SITE = SITE || {};
       }
     });
 
-    getRandomImage.done(function (response) {
-      var item = response.data[0];
-      var imageId = item.link;
-
-      SITE.image = imageId;
-      console.log(SITE.image);
-      
-    });
-
-    $.when( getHanatarash, getRandomVideo, getRandomImage ).then(infoLoaded);
+    $.when( getRandomImage, getHanatarash, getRandomVideo ).then(infoLoaded);
 
   }
 
