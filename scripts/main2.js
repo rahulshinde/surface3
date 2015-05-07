@@ -94,6 +94,7 @@ var SITE = SITE || {};
   //   };
 
   infoLoaded = function infoLoadedF (data, data2, data3) {
+    console.log(data, data2, data3)
   
 
     if (data) {
