@@ -21,6 +21,12 @@ var SITE = SITE || {};
   var searchNum = Math.floor(Math.random()* searchArray.length);
   var searchTerm = searchArray[searchNum];
 
+  //insert input values
+  var inputTxt = ' ' + searchTerm;
+  document.getElementById("variable-input").textContent=inputTxt;
+  var numTxt = '[' + searchNum + ']';
+  document.getElementById("variable-num").textContent= numTxt;
+
   
 
 
@@ -50,11 +56,7 @@ var SITE = SITE || {};
     var imgurTxt = SITE.image;
     document.getElementById('imgur-response').textContent=imgurTxt;
 
-    //insert input values
-    var inputTxt = ' ' + searchTerm;
-    document.getElementById("variable-input").textContent=inputTxt;
-    var numTxt = '[' + searchNum + ']';
-    document.getElementById("variable-num").textContent= numTxt;
+    
 
 
   }
@@ -106,7 +108,7 @@ var SITE = SITE || {};
     }
 
     if (data2) {
-      // hanta
+      // hantarash
       for(var i in data2.items) {
         var item = data2.items[1];
         var hanatarashId = item.id.videoId;
@@ -121,11 +123,12 @@ var SITE = SITE || {};
         var youtubeId = item.id.videoId;
 
         SITE.video = youtubeId;
-        console.log(SITE.video);   
+           
       }
     }
 
-
+    console.log(SITE.hanatarash);
+    console.log(SITE.video);
     // $.when( infoLoaded ).then(placeInfo);
 
   }
