@@ -94,11 +94,11 @@ var SITE = SITE || {};
   //   };
 
   infoLoaded = function infoLoadedF (data, data2, data3) {
-    console.log(data, data2, data3)
   
 
     if (data) {
       // Imgur
+
       var item = response.data[0];
       var imageId = item.link;
 
@@ -125,6 +125,8 @@ var SITE = SITE || {};
       }
     }
 
+
+    // $.when( infoLoaded ).then(placeInfo);
 
   }
 
