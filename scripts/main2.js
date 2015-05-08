@@ -23,9 +23,9 @@ var SITE = SITE || {};
 
   //insert input values
   var inputTxt = ' ' + searchTerm;
-  document.getElementById("variable-input").textContent=inputTxt;
+  document.getElementById("variable-input").innerHTML=inputTxt;
   var numTxt = '[' + searchNum + ']';
-  document.getElementById("variable-num").textContent= numTxt;
+  document.getElementById("variable-num").innerHTML= numTxt;
 
   
 
@@ -96,7 +96,7 @@ var SITE = SITE || {};
   //   };
 
   infoLoaded = function infoLoadedF (data, data2, data3) {
-  
+    console.log(data, data2, data3);
 
     if (data) {
       // Imgur
