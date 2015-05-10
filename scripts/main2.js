@@ -22,10 +22,6 @@ var SITE = SITE || {};
   var searchTerm = searchArray[searchNum];
 
   //insert input values
-  var inputTxt = ' ' + searchTerm;
-  document.getElementById("variable-input").innerHTML=inputTxt;
-  var numTxt = '[' + searchNum + ']';
-  document.getElementById("variable-num").innerHTML= numTxt;
 
   
 
@@ -56,80 +52,53 @@ var SITE = SITE || {};
     var imgurTxt = SITE.image;
     document.getElementById('imgur-response').textContent=imgurTxt;
 
+    //var inputTxt = ' ' + searchTerm;
+    //document.getElementById("variable-input").innerHTML=inputTxt;
+    //var numTxt = '[' + searchNum + ']';
+    //document.getElementById("variable-num").innerHTML= numTxt;
+
     
 
 
   }
 
-  // var hanatarashInfo,
-  //       youtubeInfo,
-  //       imgurInfo;
 
-  // hanatarashInfo = function hanatarashInfoF (data) {
-  //     console.log(data);
-  //      for(var i in data.items) {
-  //         var item = data.items[1];
-  //         var hanatarashId = item.id.videoId;
-  //         SITE.hanatarash = hanatarashId;        }
-
-  //   };
-
-  //   youtubeInfo = function youtubeInfoF (data) {
-  //     console.log(data);
-  //      for(var i in data.items) {
-  //         var item = data.items[i];
-  //         var youtubeId = item.id.videoId;
-
-  //         SITE.video = youtubeId;
-  //         console.log(SITE.video);
-  //       }   
-  //   };
-
-  //   imgurInfo = function imgurInfoF (response) {
-  //     console.log(data);
-  //     var item = response.data[0];
-  //     var imageId = item.link;
-
-  //     SITE.image = imageId;
-  //     console.log(SITE.image);
-      
-  //   };
 
   infoLoaded = function infoLoadedF (data, data2, data3) {
-    console.log(data, data2, data3);
+    // console.log(data, data2, data3);
 
     if (data) {
       // Imgur
 
-      var item = response.data[0];
-      var imageId = item.link;
+      var item = data;
+      var imageId = item[0].data[0].link;
+      console.log(imageId);
+
 
       SITE.image = imageId;
     }
 
     if (data2) {
       // hantarash
-      for(var i in data2.items) {
-        var item = data2.items[1];
-        var hanatarashId = item.id.videoId;
-        SITE.hanatarash = hanatarashId;       
-      }
+      var item = data2;
+      var hanatarashId = item[0].items[1].id.videoId;
+      SITE.hanatarash = hanatarashId;       
+      
     }
 
     if (data3) {
       // youtube
-      for(var i in data3.items) {
-        var item = data3.items[i];
-        var youtubeId = item.id.videoId;
-
-        SITE.video = youtubeId;
+      var item = data3;
+      var youtubeId = item[0].items[0].id.videoId;
+      console.log(youtubeId);
+      SITE.video = youtubeId;
            
-      }
+      
     }
-
-    console.log(SITE.hanatarash);
-    console.log(SITE.video);
-    // $.when( infoLoaded ).then(placeInfo);
+    // console.log(SITE.image);
+    // console.log(SITE.hanatarash);
+    // console.log(SITE.video);
+    $.when(infoLoaded).then(placeInfo);
 
   }
 
