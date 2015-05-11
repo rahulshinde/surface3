@@ -27,22 +27,29 @@ var SITE = SITE || {};
 
 
   placeInfo = function placeInfoF () {
-    // insert hanatarash
-    var videoHanatarash = '<iframe id="ytplayer" type="text/html" width="150" height="115" src="http://www.youtube.com/embed/' + SITE.hanatarash + '?autoplay=1&rel=0&showinfo=0&controls=0&modestbranding=1&origin=http://example.com" frameborder="0"/></iframe>';
-    document.getElementById('hanatarash').innerHTML=videoHanatarash;
+    var theDiv = document.getElementById('hanatarash');
+    if(theDiv.innerHTML == '') {
+      return;
+    }
 
-    //insert video
-    var videoRandom = '<iframe id="ytplayer" type="text/html" width="500" height="350" src="http://www.youtube.com/embed/' + SITE.video + '?autoplay=1&rel=0&showinfo=0&controls=0&modestbranding=1&origin=http://example.com" frameborder="0"/></iframe>';
-    document.getElementById('video').innerHTML=videoRandom;
+    else {
 
-    //insert image
-    var imgRandom = '<img id="imgur" src="' + SITE.image +'">';
-    document.getElementById('img').innerHTML=imgRandom;
+      // insert hanatarash
+      var videoHanatarash = '<iframe id="ytplayer" type="text/html" width="150" height="115" src="http://www.youtube.com/embed/' + SITE.hanatarash + '?autoplay=1&rel=0&showinfo=0&controls=0&modestbranding=1&origin=http://example.com" frameborder="0"/></iframe>';
+      document.getElementById('hanatarash').innerHTML=videoHanatarash;
+  
+      //insert video
+      var videoRandom = '<iframe id="ytplayer" type="text/html" width="500" height="350" src="http://www.youtube.com/embed/' + SITE.video + '?autoplay=1&rel=0&showinfo=0&controls=0&modestbranding=1&origin=http://example.com" frameborder="0"/></iframe>';
+      document.getElementById('video').innerHTML=videoRandom;
+  
+      //insert image
+      var imgRandom = '<img id="imgur" src="' + SITE.image +'">';
+      document.getElementById('img').innerHTML=imgRandom;
+    }
 
     //insert hanatarash text
     var hanatarashTxt = SITE.hanatarash;
     document.getElementById('hanatarash-response').textContent=hanatarashTxt;
-    console.log(hanatarashTxt);
 
     //insert youtube text
     var youtubeTxt = SITE.video;
@@ -51,11 +58,6 @@ var SITE = SITE || {};
     //insert imgur text
     var imgurTxt = SITE.image;
     document.getElementById('imgur-response').textContent=imgurTxt;
-
-    //var inputTxt = ' ' + searchTerm;
-    //document.getElementById("variable-input").innerHTML=inputTxt;
-    //var numTxt = '[' + searchNum + ']';
-    //document.getElementById("variable-num").innerHTML= numTxt;
 
     
 
