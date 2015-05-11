@@ -22,6 +22,8 @@ var SITE = SITE || {};
   var searchTerm = searchArray[searchNum];
 
   //insert input values
+  //document.getElementById('variable-input').textContent=searchTerm;
+  //document.getElementById('variable-num').textContent=searchNum;
   
 
   placeInfo = function placeInfoF () {
@@ -32,7 +34,7 @@ var SITE = SITE || {};
     var theDiv = document.getElementById('hanatarash');
     
     if(theDiv.innerHTML == '') {
-      placeText(); //this is where the colorbox would be called/text would be placed
+      return;
     }
    
     else {
@@ -49,17 +51,7 @@ var SITE = SITE || {};
       var imgRandom = '<img id="imgur" src="' + SITE.image +'">';
       document.getElementById('img').innerHTML=imgRandom;
 
-      //insert hanatarash text
-      var hanatarashTxt = SITE.hanatarash;
-      document.getElementById('hanatarash-response').textContent=hanatarashTxt;
-   
-      //insert youtube text
-      var youtubeTxt = SITE.video;
-      document.getElementById('youtube-response').textContent=youtubeTxt;
-   
-      //insert imgur text
-      var imgurTxt = SITE.image;
-      document.getElementById('imgur-response').textContent=imgurTxt;
+      
       
     }
 
