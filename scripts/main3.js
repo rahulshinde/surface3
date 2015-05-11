@@ -22,34 +22,33 @@ var SITE = SITE || {};
   var searchTerm = searchArray[searchNum];
 
   //insert input values
+  
 
   placeInfo = function placeInfoF () {
-    $(".about").colorbox({transition:"fade", width:"75%", height:"75%", fixed:true, onLoad: function() {
+    
       
-      $('#cboxClose').remove();
       
-      var theDiv = document.getElementById('hanatarash');
       
-      if(theDiv.innerHTML == '') {
-        return;
-      }
+    var theDiv = document.getElementById('hanatarash');
+    
+    if(theDiv.innerHTML == '') {
+      placeText(); //this is where the colorbox would be called/text would be placed
+    }
    
-      else {
+    else {
    
-        //insert hanatarash text
-      var hanatarashTxt = SITE.hanatarash;
-      document.getElementById('hanatarash-response').textContent=hanatarashTxt;
-   
-      //insert youtube text
-      var youtubeTxt = SITE.video;
-      document.getElementById('youtube-response').textContent=youtubeTxt;
-   
-      //insert imgur text
-      var imgurTxt = SITE.image;
-      document.getElementById('imgur-response').textContent=imgurTxt;
-        
-      }
-   
+      // insert hanatarash
+      var videoHanatarash = '<iframe id="ytplayer" type="text/html" width="150" height="115" src="http://www.youtube.com/embed/' + SITE.hanatarash + '?autoplay=1&rel=0&showinfo=0&controls=0&modestbranding=1&origin=http://example.com" frameborder="0"/></iframe>';
+      document.getElementById('hanatarash').innerHTML=videoHanatarash;
+    
+      //insert video
+      var videoRandom = '<iframe id="ytplayer" type="text/html" width="500" height="350" src="http://www.youtube.com/embed/' + SITE.video + '?autoplay=1&rel=0&showinfo=0&controls=0&modestbranding=1&origin=http://example.com" frameborder="0"/></iframe>';
+      document.getElementById('video').innerHTML=videoRandom;
+    
+      //insert image
+      var imgRandom = '<img id="imgur" src="' + SITE.image +'">';
+      document.getElementById('img').innerHTML=imgRandom;
+
       //insert hanatarash text
       var hanatarashTxt = SITE.hanatarash;
       document.getElementById('hanatarash-response').textContent=hanatarashTxt;
@@ -61,7 +60,12 @@ var SITE = SITE || {};
       //insert imgur text
       var imgurTxt = SITE.image;
       document.getElementById('imgur-response').textContent=imgurTxt;
-    }});
+      
+    }
+
+    
+   
+    
   }
 
 
