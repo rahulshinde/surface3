@@ -15,6 +15,8 @@ $(function(){
    
 	//insert imgur text
 	var imgurTxt = SITE.image;
-	document.getElementById('imgur-response').textContent=imgurTxt; 
+	document.getElementById('imgur-response').textContent=imgurTxt;
+
+	
 });
 

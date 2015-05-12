@@ -18,6 +18,9 @@ var SITE = SITE || {};
   document.getElementById("script").innerHTML= Str1 + "<br><br>" + Str2 + "<br><br>" + Str3 + "<br><br>" + Str4 + "<br><br>" + Str5 + "<br><br>" + Str6 + "<br><br>" + Str7 + "<br><br>" + Str8 + "<br><br>" + Str9 + "<br><br>" + Str10;
 
   var searchArray = searchString.split(" ");
+  SITE.searchArray = searchArray;
+  console.log(SITE.searchArray);
+  
   var searchNum = Math.floor(Math.random()* searchArray.length);
   SITE.searchNum = searchNum;
   var searchTerm = searchArray[searchNum];
@@ -40,17 +43,8 @@ var SITE = SITE || {};
     //insert image
     var imgRandom = '<img id="imgur" src="' + SITE.image +'">';
     document.getElementById('img').innerHTML=imgRandom;
-
-      
-    
-
-    
-   
     
   }
-
-
-
 
   infoLoaded = function infoLoadedF (data, data2, data3) {
     // console.log(data, data2, data3);
