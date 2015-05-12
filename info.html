@@ -19,11 +19,11 @@
 						https://www.youtube.com/watch?v=<span id="hanatarash-response"> </span>
 						<br>
 						<br>
-						variable input: <span id="variable-input"> </span> <span id="variable-num"> </span>
+						variable input: <span id="variable-input"> </span> [<span id="variable-num"> </span>]
 						<br>
 						youtube response: 
 						<br>
-						https://www.youtube.com/watch?v=<span class="youtube-response"></span>
+						https://www.youtube.com/watch?v=<span id="youtube-response"></span>
 						<br>
 						imgur response:
 						<br>
@@ -42,88 +42,28 @@
 
 				<div class="code-right">
 					<p>
-						
-						(function ($) {
-							<br>
-							<br>
-  							<span id="tab1">
-  								var getHanatarash,
-  							  							<br>
-  							  							    getRandomVideo,
-  							  							<br>
-  							  							    getRandomImage;
-  							  							<br>
-  							  							<br>
-  							  							var searchArray = searchString.split(" ");
-  							  							<br>
-  							  							var searchNum = Math.floor(Math.random()* searchArray.length);
-  							  							<br>
-  							  							var searchTerm = searchArray[searchNum];
-  														<br>
-  														<br>
-  							  							document.getElementById("variable-input").textContent= " " + searchTerm;
-  							  							<br>
-  							  							document.getElementById("variable-num").textContent= "[" + searchNum + "]";
-  							  						</span>
-							<br>
-							<br>
-  							<span id="tab1">getHanatarash = function getHanatarashF() {</span>
-  							<br>
-  							<span id="tab2">var hanatarash = $.ajax({
-  							  								<br>
-  							  							    url: "https://www.googleapis.com/youtube/v3/search?part=id%2C+snippet&q=hanatarash+full+album&maxResults=1&key=AIzaSyDmdYBSUbMtBe-YArhGfDR5d32RtKWwRwA",
-  							  						    	<br>
-  							  						    	dataType: 'jsonp',
-  							  						    	<br>
-  							      							type: 'GET'<br></span>
-    						<span id="tab1">});</span>
-							<br>
-							<br>
-    						hanatarash.done(function (data) {
-    						<br>
-    						   for(var i in data.items) {
-    						   <br>
-    						      var item = data.items[i];
-    						      <br>
-    						      var videoId = item.id.videoId;
-    						      <br>
-							  <br>
-    					      // document.getElementById("hanatarash-response").textContent= videoId;
-    					      <br>
-    					    }
-<br>
-<br>
-						    });
-						    <br>
-						<br>
-						  };
-<br>
-<br>
-  getRandomVideo = function getRandomF() {
-    var randomVideo = $.ajax({
+            getInfo = function getInfoF () {
+            <br>
+              <span class="tab1">var getHanatarash,</span>
+                  getRandomVideo,
+                  getRandomImage;
+
+    var getHanatarash = $.ajax({
+      url: "https://www.googleapis.com/youtube/v3/search?part=id%2C+snippet&q=hanatarash&maxResults=3&key=AIzaSyDmdYBSUbMtBe-YArhGfDR5d32RtKWwRwA",
+      dataType: 'jsonp',
+      type: 'GET'
+    });
+
+
+    var getRandomVideo = $.ajax({
       url: "https://www.googleapis.com/youtube/v3/search?part=id%2C+snippet&q=" + searchTerm + "&maxResults=1&key=AIzaSyDmdYBSUbMtBe-YArhGfDR5d32RtKWwRwA",
       dataType: 'jsonp',
       type: 'GET'
     });
 
-    randomVideo.done(function (data) {
-       for(var i in data.items) {
-          var item = data.items[i];
-          var videoId2 = item.id.videoId;
+    
 
-          // document.getElementById("youtube-response").textContent= videoId2;
-        }   
-    });
-
-
-
-
-    console.log(searchNum);
-    console.log(searchTerm);
-  }
-
-  getImgurAuth = function getImgurAuthF() {
-    var randomImage = $.ajax({
+    var getRandomImage = $.ajax({
       url: 'https://api.imgur.com/3/gallery/search.json',
       data: {
         q: searchTerm
@@ -134,21 +74,64 @@
       }
     });
 
-    randomImage.done(function (response) {
-      var item = response.data[0];
-      var imageId = item.link;
+    $.when( getRandomImage, getHanatarash, getRandomVideo ).then(infoLoaded);
 
-      // document.getElementById("imgur-response").textContent= imageId;
-      
-    });
   }
 
-  getHanatarash();
-  getRandomVideo();
-  getImgurAuth();
+  infoLoaded = function infoLoadedF (data, data2, data3) {
+    // console.log(data, data2, data3);
+
+    if (data) {
+      // Imgur
+
+      var item = data;
+      var imageId = item[0].data[0].link;
+      console.log(imageId);
 
 
-})(jQuery);
+      SITE.image = imageId;
+    }
+
+    if (data2) {
+      // hantarash
+      var item = data2;
+      var hanatarashId = item[0].items[1].id.videoId;
+      SITE.hanatarash = hanatarashId;       
+      
+    }
+
+    if (data3) {
+      // youtube
+      var item = data3;
+      var youtubeId = item[0].items[0].id.videoId;
+      console.log(youtubeId);
+      SITE.video = youtubeId;
+           
+      
+    }
+    // console.log(SITE.image);
+    // console.log(SITE.hanatarash);
+    // console.log(SITE.video);
+    $.when(infoLoaded).then(placeInfo);
+
+  }
+
+  placeInfo = function placeInfoF () {
+    
+    // insert hanatarash
+    var videoHanatarash = '<iframe id="ytplayer" type="text/html" width="150" height="115" src="http://www.youtube.com/embed/' + SITE.hanatarash + '?autoplay=1&rel=0&showinfo=0&controls=0&modestbranding=1&origin=http://example.com" frameborder="0"/></iframe>';
+    document.getElementById('hanatarash').innerHTML=videoHanatarash;
+  
+    //insert video
+    var videoRandom = '<iframe id="ytplayer" type="text/html" width="500" height="350" src="http://www.youtube.com/embed/' + SITE.video + '?autoplay=1&rel=0&showinfo=0&controls=0&modestbranding=1&origin=http://example.com" frameborder="0"/></iframe>';
+    document.getElementById('video').innerHTML=videoRandom;
+  
+    //insert image
+    var imgRandom = '<img id="imgur" src="' + SITE.image +'">';
+    document.getElementById('img').innerHTML=imgRandom;
+    
+  }
+						
 					</p>
 				</div>
 			</div>

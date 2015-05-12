@@ -1,6 +1,8 @@
 $(function(){
-	// document.getElementById('variable-input').textContent=searchTerm;
- //  	document.getElementById('variable-num').textContent=searchNum;
+	//insert variable input text
+	document.getElementById('variable-input').textContent=SITE.searchTerm;
+	//insert variable input number
+  	document.getElementById('variable-num').textContent=SITE.searchNum;
 
 	//insert hanatarash text
    	var hanatarashTxt = SITE.hanatarash;

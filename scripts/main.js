@@ -19,8 +19,9 @@ var SITE = SITE || {};
 
   var searchArray = searchString.split(" ");
   var searchNum = Math.floor(Math.random()* searchArray.length);
+  SITE.searchNum = searchNum;
   var searchTerm = searchArray[searchNum];
-
+  SITE.searchTerm = searchTerm;
   //insert input values
   // document.getElementById('variable-input').textContent=searchTerm;
   // document.getElementById('variable-num').textContent=searchNum;
