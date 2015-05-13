@@ -80,23 +80,36 @@ x<!DOCTYPE html>
     			<span id="tab1">});</span>
     			<br>
     			<br>
+    			<span id="tab1">var getRandomImage = $.ajax({</span>
+    			<br>
+    			  <span id="tab2">
+					<br>
+    			  	url: 'https://api.imgur.com/3/gallery/search.json',
+    			  	<br>
+    			    data: {</span>
+    			    <br>
+    			      <span id="tab3">q: searchTerm</span>
+    			      <br>
+    			    },
+    			    <br>
+    			    <span id="tab2">type: 'GET',
+    			    <br>
+    			    headers: {</span>
+    			    <br>
+    			      <span id="tab3">Authorization: 'Client-ID 77fc4712c0786c7'</span>
+    			      <br>
+    			    <span id="tab2">}</span>
+    			<span id="tab1">});</span>
+    			<br>
 
     
 
-    var getRandomImage = $.ajax({
-      url: 'https://api.imgur.com/3/gallery/search.json',
-      data: {
-        q: searchTerm
-      },
-      type: 'GET',
-      headers: {
-        Authorization: 'Client-ID 77fc4712c0786c7'
-      }
-    });
+  				}
 
-    
+  				<br>
+  				<br>
 
-  }
+  				<a id="github-link" href="https://github.com/rahulshinde/surface3" target="blank">FULL DOCUMENTATION HERE</a>
 
 						
 					</p>

@@ -447,6 +447,13 @@ table {
   /* Misc */
 }
 
+.code-right a:link,
+.code-right a:visited {
+  text-align: center;
+  color: #FFF;
+
+}
+
 #tab1{
   position: relative;
   left: 30px;
@@ -455,6 +462,11 @@ table {
 #tab2{
   position: relative;
   left: 60px;
+}
+
+#tab3{
+  position: relative;
+  left: 90px;
 }
 
 .rotate {
