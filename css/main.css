@@ -335,7 +335,7 @@ table {
 
 #info-container {
   width: 99%;
-  height: 98%;
+  height: 93%;
   border: 5px solid #FFF;
   background: black;
 }
@@ -356,7 +356,7 @@ table {
   float: left;
   position: absolute;
   left: 3%;
-  top: 5%;
+  top: 7%;
   /* Box-model */
   height: 40%;
   width: 45%;
@@ -423,7 +423,7 @@ table {
   float: right;
   position: absolute;
   right: 3%;
-  top: 5%;
+  top: 7%;
   /* Box-model */
   overflow-y: scroll;
   height: 80%;
