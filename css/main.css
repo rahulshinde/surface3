@@ -180,7 +180,7 @@ table {
     animation-name: spinner;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    animation-duration: 6s;
+    animation-duration: 8s;
 
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
